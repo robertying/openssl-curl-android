@@ -29,7 +29,7 @@ make -j4
 make install
 make clean
 mkdir -p ../build/curl/arm64-v8a
-cp $PWD/build/arm64-v8a/lib/*.a ../build/curl/arm64-v8a
+cp -R $PWD/build/arm64-v8a ../build/curl/
 
 # arm
 export TARGET_HOST=armv7a-linux-androideabi
@@ -56,7 +56,7 @@ make -j4
 make install
 make clean
 mkdir -p ../build/curl/armeabi-v7a
-cp $PWD/build/armeabi-v7a/lib/*.a ../build/curl/armeabi-v7a
+cp -R $PWD/build/armeabi-v7a ../build/curl/
 
 # x86
 export TARGET_HOST=i686-linux-android
@@ -83,7 +83,7 @@ make -j4
 make install
 make clean
 mkdir -p ../build/curl/x86
-cp $PWD/build/x86/lib/*.a ../build/curl/x86
+cp -R $PWD/build/x86 ../build/curl/
 
 # x64
 export TARGET_HOST=x86_64-linux-android
@@ -110,6 +110,6 @@ make -j4
 make install
 make clean
 mkdir -p ../build/curl/x86_64
-cp $PWD/build/x86_64/lib/*.a ../build/curl/x86_64
+cp -R $PWD/build/x86_64 ../build/curl/
 
 cd ..

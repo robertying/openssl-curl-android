@@ -16,7 +16,7 @@ make -j4
 make install_sw
 make clean
 mkdir -p ../build/openssl/arm64-v8a
-cp $PWD/build/arm64-v8a/lib/*.a ../build/openssl/arm64-v8a
+cp -R $PWD/build/arm64-v8a ../build/openssl/
 
 # arm
 export TARGET_HOST=armv7a-linux-androideabi
@@ -28,7 +28,7 @@ make -j4
 make install_sw
 make clean
 mkdir -p ../build/openssl/armeabi-v7a
-cp $PWD/build/armeabi-v7a/lib/*.a ../build/openssl/armeabi-v7a
+cp -R $PWD/build/armeabi-v7a ../build/openssl/
 
 # x86
 export TARGET_HOST=i686-linux-android
@@ -40,7 +40,7 @@ make -j4
 make install_sw
 make clean
 mkdir -p ../build/openssl/x86
-cp $PWD/build/x86/lib/*.a ../build/openssl/x86
+cp -R $PWD/build/x86 ../build/openssl/
 
 # x64
 export TARGET_HOST=x86_64-linux-android
@@ -52,6 +52,6 @@ make -j4
 make install_sw
 make clean
 mkdir -p ../build/openssl/x86_64
-cp $PWD/build/x86_64/lib/*.a ../build/openssl/x86_64
+cp -R $PWD/build/x86_64 ../build/openssl/
 
 cd ..
