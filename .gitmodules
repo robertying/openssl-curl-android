@@ -1,0 +1,8 @@
+[submodule "openssl"]
+	path = openssl
+	url = https://github.com/openssl/openssl.git
+	ignore = dirty
+[submodule "curl"]
+	path = curl
+	url = https://github.com/curl/curl.git
+	ignore = dirty
