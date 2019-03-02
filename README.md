@@ -22,14 +22,14 @@ chmod +x ./build.sh
 ./build.sh
 ```
 
-All compiled libs are located in root `build` directory
+All compiled libs are located in `build/openssl` and `build/curl` directory
 
 Use NDK to link those libs, part of `Android.mk` example:
 
 ```makefile
 include $(CLEAR_VARS)
 LOCAL_MODULE := curl
-LOCAL_SRC_FILES := build/$(TARGET_ARCH_ABI)/libcurl.a
+LOCAL_SRC_FILES := build/curl/$(TARGET_ARCH_ABI)/libcurl.a
 include $(PREBUILT_STATIC_LIBRARY)
 ```
 
