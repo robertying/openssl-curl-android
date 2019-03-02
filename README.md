@@ -36,3 +36,9 @@ include $(PREBUILT_STATIC_LIBRARY)
 ## Options
 
 Change scripts' configure arguments to meet your requirements
+
+For now, using tls (https) in Android would throw `peer verification failed`
+
+Please explicitly set `curl_easy_setopt(curl, CURLOPT_CAINFO, CA_BUNDLE_PATH);` where `CA_BUNDLE_PATH` is your ca-bundle in the devide storage
+
+You can download and copy [cacert.pem](https://curl.haxx.se/docs/caextract.html) to the internal storage to get tls working for libcurl
