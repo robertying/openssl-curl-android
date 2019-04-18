@@ -4,9 +4,9 @@ Compile openssl and curl for Android
 
 ## Prerequisites
 
-Make sure you have `Android NDK` installed
+Make sure you have `Android NDK` installed.
 
-And also necessary `autoconf` and `libtool` toolchains
+And also necessary `autoconf` and `libtool` toolchains.
 
 ## Download
 
@@ -30,7 +30,7 @@ chmod +x ./build.sh
 ./build.sh
 ```
 
-All compiled libs are located in `build/openssl` and `build/curl` directory
+All compiled libs are located in `build/openssl` and `build/curl` directory.
 
 Use NDK to link those libs, part of `Android.mk` example:
 
@@ -43,10 +43,14 @@ include $(PREBUILT_STATIC_LIBRARY)
 
 ## Options
 
-Change scripts' configure arguments to meet your requirements
+Change scripts' configure arguments to meet your requirements.
 
-For now, using tls (https) in Android would throw `peer verification failed`
+For now, using tls (https) in Android would throw `peer verification failed`.
 
-Please explicitly set `curl_easy_setopt(curl, CURLOPT_CAINFO, CA_BUNDLE_PATH);` where `CA_BUNDLE_PATH` is your ca-bundle in the devide storage
+Please explicitly set `curl_easy_setopt(curl, CURLOPT_CAINFO, CA_BUNDLE_PATH);` where `CA_BUNDLE_PATH` is your ca-bundle in the devide storage.
 
-You can download and copy [cacert.pem](https://curl.haxx.se/docs/caextract.html) to the internal storage to get tls working for libcurl
+You can download and copy [cacert.pem](https://curl.haxx.se/docs/caextract.html) to the internal storage to get tls working for libcurl.
+
+## Working Example
+
+Checkout this [repo](https://github.com/robertying/CampusNet-Android/blob/master/app/src/main/cpp/jni) to see how to integrate compiled static libraries into an existing Android project, including `Android.mk` setup and `JNI` configurations.
