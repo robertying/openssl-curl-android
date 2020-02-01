@@ -6,7 +6,7 @@ Compile openssl and curl for Android
 
 Make sure you have `Android NDK` installed.
 
-And also necessary `autoconf` and `libtool` toolchains.
+You may also need to install `autoconf` and `libtool` toolchains.
 
 ## Download
 
@@ -14,7 +14,7 @@ If you do not want to compile them yourself, you can download pre-compiled stati
 
 Doing your own compilation is recommended, since the pre-compiled binary can become outdated soon.
 
-Update git submodules to compile newer versions of the libraries.
+Checkout newer versions in git submodules to compile newer versions of the libraries.
 
 ## Usage
 
@@ -22,8 +22,8 @@ Update git submodules to compile newer versions of the libraries.
 git clone https://github.com/robertying/openssl-curl-android.git
 git submodule update --init --recursive
 
-export ANDROID_NDK_HOME=your_android_ndk_bundle_root_here
-export HOST_TAG=see_this_table_for_info # https://developer.android.com/ndk/guides/other_build_systems#overview
+export ANDROID_NDK_HOME=your_android_ndk_root_here # e.g. $HOME/Library/Android/sdk/ndk/21.0.6113669
+export HOST_TAG=see_this_table_for_info # e.g. darwin-x86_64, see https://developer.android.com/ndk/guides/other_build_systems#overview
 export MIN_SDK_VERSION=21 # or any version you want
 
 chmod +x ./build.sh
@@ -43,14 +43,16 @@ include $(PREBUILT_STATIC_LIBRARY)
 
 ## Options
 
-Change scripts' configure arguments to meet your requirements.
+Change scripts' configure arguments to meet your own needs.
 
-For now, using tls (https) in Android would throw `peer verification failed`.
+For now, using TLS (https) in Android would throw `peer verification failed`.
 
-Please explicitly set `curl_easy_setopt(curl, CURLOPT_CAINFO, CA_BUNDLE_PATH);` where `CA_BUNDLE_PATH` is your ca-bundle in the devide storage.
+Please explicitly set `curl_easy_setopt(curl, CURLOPT_CAINFO, CA_BUNDLE_PATH);` where `CA_BUNDLE_PATH` is your ca bundle path in the device storage.
 
-You can download and copy [cacert.pem](https://curl.haxx.se/docs/caextract.html) to the internal storage to get tls working for libcurl.
+You can download and copy [cacert.pem](https://curl.haxx.se/docs/caextract.html) to Android assets or the device internal storage to get TLS working for libcurl.
 
-## Working Example
+## Working Examples
 
-Checkout this [repo](https://github.com/robertying/CampusNet-Android/blob/master/app/src/main/cpp/jni) to see how to integrate compiled static libraries into an existing Android project, including `Android.mk` setup and `JNI` configurations.
+- See this minimal example which calls `curl` from Android app, using `JNI` to use `libcurl`: [AndroidCurlExample](https://github.com/robertying/AndroidCurlExample). It includes `Android.mk` setup and `JNI` configurations.
+
+- Checkout this more complex [repo](https://github.com/robertying/CampusNet-Android/blob/master/app/src/main/cpp/jni) to see how to integrate other compiled static libraries into an existing Android project, including `Android.mk` setup and `JNI` configurations.
