@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export ANDROID_NDK_HOME=$HOME/Library/Android/sdk/ndk/21.0.6113669
+export ANDROID_NDK_HOME=$HOME/Library/Android/sdk/ndk/21.1.6352462
 export HOST_TAG=darwin-x86_64
 export MIN_SDK_VERSION=21
 
