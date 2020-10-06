@@ -20,6 +20,7 @@ Checkout newer versions in git submodules to compile newer versions of the libra
 
 ```bash
 git clone https://github.com/robertying/openssl-curl-android.git
+cd openssl-curl-android
 git submodule update --init --recursive
 
 export ANDROID_NDK_HOME=your_android_ndk_root_here # e.g. $HOME/Library/Android/sdk/ndk/21.0.6113669
