@@ -44,13 +44,13 @@ include $(PREBUILT_STATIC_LIBRARY)
 
 ## Options
 
-Change scripts' configure arguments to meet your own needs.
+- Change scripts' configure arguments to meet your own needs.
 
-For now, using TLS (https) in Android would throw `peer verification failed`.
+- For now, using TLS (https) in Android would throw `peer verification failed`.
 
-Please explicitly set `curl_easy_setopt(curl, CURLOPT_CAINFO, CA_BUNDLE_PATH);` where `CA_BUNDLE_PATH` is your ca bundle path in the device storage.
+  Please explicitly set `curl_easy_setopt(curl, CURLOPT_CAINFO, CA_BUNDLE_PATH);` where `CA_BUNDLE_PATH` is your ca bundle path in the device storage.
 
-You can download and copy [cacert.pem](https://curl.haxx.se/docs/caextract.html) to Android assets or the device internal storage to get TLS working for libcurl.
+  You can download and copy [cacert.pem](https://curl.haxx.se/docs/caextract.html) to Android assets or the device internal storage to get TLS working for libcurl.
 
 ## Working Examples
 
