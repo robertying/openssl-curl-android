@@ -3,36 +3,10 @@
 export TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/$HOST_TAG
 
 # curl common configuration arguments
+# disable functionalities here to reduce size
 ARGUMENTS=" \
-    --disable-shared \
-    --disable-verbose \
-    --disable-manual \
-    --disable-crypto-auth \
-    --disable-unix-sockets \
-    --disable-ares \
-    --disable-rtsp \
-    --disable-ipv6 \
-    --disable-proxy \
-    --disable-versioned-symbols \
-    --enable-hidden-symbols \
-    --without-libidn \
-    --without-librtmp \
-    --without-zlib \
-    --disable-dict \
-    --disable-file \
-    --disable-ftp \
-    --disable-ftps \
-    --disable-gopher \
-    --disable-imap \
-    --disable-imaps \
-    --disable-pop3 \
-    --disable-pop3s \
-    --disable-smb \
-    --disable-smbs \
-    --disable-smtp \
-    --disable-smtps \
-    --disable-telnet \
-    --disable-tftp \
+    --with-pic \
+    --disable-shared
     "
 
 mkdir -p build/curl
