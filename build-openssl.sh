@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    export CORES=$((`sysctl -n hw.logicalcpu`+1))
+else
+    export CORES=$((`nproc`+1))
+fi
+
 export TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/$HOST_TAG
 
 # openssl refers to the host specific toolchain as "ANDROID_NDK_HOME"
@@ -20,7 +26,7 @@ ln -sfn $TOOLCHAIN/bin/$TARGET_HOST$MIN_SDK_VERSION-clang $TOOLCHAIN/bin/$TARGET
  -D__ANDROID_API__=$MIN_SDK_VERSION \
  --prefix=$PWD/build/$ANDROID_ARCH
 
-make -j5
+make -j$CORES
 make install_sw
 make clean
 mkdir -p ../build/openssl/$ANDROID_ARCH
@@ -37,7 +43,7 @@ ln -sfn $TOOLCHAIN/bin/armv7a-linux-androideabi$MIN_SDK_VERSION-clang $TOOLCHAIN
  -D__ANDROID_API__=$MIN_SDK_VERSION \
  --prefix=$PWD/build/$ANDROID_ARCH
 
-make -j5
+make -j$CORES
 make install_sw
 make clean
 mkdir -p ../build/openssl/$ANDROID_ARCH
@@ -53,7 +59,7 @@ ln -sfn $TOOLCHAIN/bin/$TARGET_HOST$MIN_SDK_VERSION-clang $TOOLCHAIN/bin/$TARGET
  -D__ANDROID_API__=$MIN_SDK_VERSION \
  --prefix=$PWD/build/$ANDROID_ARCH
 
-make -j5
+make -j$CORES
 make install_sw
 make clean
 mkdir -p ../build/openssl/$ANDROID_ARCH
@@ -69,7 +75,7 @@ ln -sfn $TOOLCHAIN/bin/$TARGET_HOST$MIN_SDK_VERSION-clang $TOOLCHAIN/bin/$TARGET
  -D__ANDROID_API__=$MIN_SDK_VERSION \
  --prefix=$PWD/build/$ANDROID_ARCH
 
-make -j5
+make -j$CORES
 make install_sw
 make clean
 mkdir -p ../build/openssl/$ANDROID_ARCH

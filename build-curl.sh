@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    export CORES=$((`sysctl -n hw.logicalcpu`+1))
+else
+    export CORES=$((`nproc`+1))
+fi
+
 export TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/$HOST_TAG
 
 # curl common configuration arguments
@@ -28,9 +34,9 @@ export SSL_DIR=$PWD/../openssl/build/$ANDROID_ARCH
 ./configure --host=$TARGET_HOST \
             --target=$TARGET_HOST \
             --prefix=$PWD/build/$ANDROID_ARCH \
-            --with-ssl=$SSL_DIR $ARGUMENTS
+            --with-openssl=$SSL_DIR $ARGUMENTS
 
-make -j5
+make -j$CORES
 make install
 make clean
 mkdir -p ../build/curl/$ANDROID_ARCH
@@ -53,9 +59,9 @@ export SSL_DIR=$PWD/../openssl/build/$ANDROID_ARCH
 ./configure --host=$TARGET_HOST \
             --target=$TARGET_HOST \
             --prefix=$PWD/build/$ANDROID_ARCH \
-            --with-ssl=$SSL_DIR $ARGUMENTS
+            --with-openssl=$SSL_DIR $ARGUMENTS
 
-make -j5
+make -j$CORES
 make install
 make clean
 mkdir -p ../build/curl/$ANDROID_ARCH
@@ -76,9 +82,9 @@ export SSL_DIR=$PWD/../openssl/build/$ANDROID_ARCH
 ./configure --host=$TARGET_HOST \
             --target=$TARGET_HOST \
             --prefix=$PWD/build/$ANDROID_ARCH \
-            --with-ssl=$SSL_DIR $ARGUMENTS
+            --with-openssl=$SSL_DIR $ARGUMENTS
 
-make -j5
+make -j$CORES
 make install
 make clean
 mkdir -p ../build/curl/$ANDROID_ARCH
@@ -99,9 +105,9 @@ export SSL_DIR=$PWD/../openssl/build/$ANDROID_ARCH
 ./configure --host=$TARGET_HOST \
             --target=$TARGET_HOST \
             --prefix=$PWD/build/$ANDROID_ARCH \
-            --with-ssl=$SSL_DIR $ARGUMENTS
+            --with-openssl=$SSL_DIR $ARGUMENTS
 
-make -j5
+make -j$CORES
 make install
 make clean
 mkdir -p ../build/curl/$ANDROID_ARCH
