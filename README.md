@@ -14,17 +14,17 @@ If you do not want to compile them yourself, you can download pre-compiled stati
 
 Doing your own compilation is recommended, since the pre-compiled binary can become outdated soon.
 
-Checkout newer versions in git submodules to compile newer versions of the libraries. For example, to build `OpenSSL_1_1_1k` and `curl-7_77_0`:
+Checkout newer versions in git submodules to compile newer versions of the libraries. For example, to build `OpenSSL_1_1_1l` and `curl-7_78_0`:
 
 ```bash
 cd openssl
 git fetch
-git checkout OpenSSL_1_1_1k
+git checkout OpenSSL_1_1_1l
 cd ..
 
 cd curl
 git fetch
-git checkout curl-7_77_0
+git checkout curl-7_78_0
 cd ..
 ```
 
@@ -35,9 +35,9 @@ git clone https://github.com/robertying/openssl-curl-android.git
 cd openssl-curl-android
 git submodule update --init --recursive
 
-export NDK=your_android_ndk_root_here # e.g. $HOME/Library/Android/sdk/ndk/22.1.7171670
+export NDK=your_android_ndk_root_here # e.g. $HOME/Library/Android/sdk/ndk/23.0.7599858
 export HOST_TAG=see_this_table_for_info # e.g. darwin-x86_64, see https://developer.android.com/ndk/guides/other_build_systems#overview
-export MIN_SDK_VERSION=21 # or any version you want
+export MIN_SDK_VERSION=23 # or any version you want
 
 chmod +x ./build.sh
 ./build.sh
