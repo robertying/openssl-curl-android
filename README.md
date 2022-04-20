@@ -63,6 +63,10 @@ include $(PREBUILT_STATIC_LIBRARY)
   Please explicitly set `curl_easy_setopt(curl, CURLOPT_CAINFO, CA_BUNDLE_PATH);` where `CA_BUNDLE_PATH` is your ca bundle path in the device storage.
 
   You can download and copy [cacert.pem](https://curl.haxx.se/docs/caextract.html) to Android assets or the device internal storage to get TLS working for libcurl.
+  
+  OR
+  
+  Use `curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);` to disable SSL Verification.
 
 ## Working Examples
 
